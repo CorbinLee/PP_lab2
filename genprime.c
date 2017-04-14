@@ -32,7 +32,7 @@ int main(int argc, char* argv[])
 		}
 	}
 
-	ttaken = omp_get_wtime() - t_start;
+	ttaken = omp_get_wtime() - tstart;
 	printf("Time take for the main part: %f\n", ttaken);
 
 	/* Write output file and exit */
