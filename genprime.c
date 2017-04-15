@@ -63,7 +63,7 @@ int main(int argc, char* argv[])
 	    exit(1);
 	}
 
-	j = 1;
+	int j = 1;
 	int prev = 2;
 	for (i = 2; i <= N; i++) {
 		if (primes[i-1] == 0) {
