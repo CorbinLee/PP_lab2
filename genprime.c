@@ -26,6 +26,7 @@ int main(int argc, char* argv[])
 	/* Generate prime numbers */
 	int i, j;
 
+	#pragma omp parallel for num_threads(t)
 	for (i = 2; i <= stop; i++) {
 		if (primes[i-1] == 0) {
 			for (j = 2; j <= N / i; j++)
