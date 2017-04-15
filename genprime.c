@@ -10,6 +10,8 @@ int main(int argc, char* argv[])
 
 	double tstart = 0.0, ttaken;
 
+	printf("0\n");
+
 	/* Parse arguments */
 	int N = strtol(argv[1], NULL, 10);
 	int t = strtol(argv[2], NULL, 10);
@@ -18,6 +20,8 @@ int main(int argc, char* argv[])
 	if (!(N > 2 && N <= 1000000) || !(t > 0 && t <= 100))
 		exit(1);
 
+	printf("1\n");
+
 	int stop = (N+1) / 2;
 	int* primes = (int *)calloc(N, sizeof(int));
 
@@ -25,6 +29,8 @@ int main(int argc, char* argv[])
 
 	/* Generate prime numbers */
 	int i, j;
+
+	printf("2\n");
 
 	#pragma omp parallel for num_threads(t)
 	for (i = 2; i <= stop; i++) {
