@@ -31,6 +31,7 @@ int main(int argc, char* argv[])
 	int i, j;
 
 	printf("2\n");
+	printf("N: %d, t: %d\n", N, t);
 
 	#pragma omp parallel for num_threads(t)
 	for (i = 2; i <= stop; i++) {
