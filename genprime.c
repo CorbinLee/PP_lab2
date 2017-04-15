@@ -29,7 +29,7 @@ int main(int argc, char* argv[])
 	for (i = 2; i <= stop; i++) {
 		if (primes[i-1] == 0) {
 			for (j = 2; j <= N / i; j++)
-				primes[i * j] = 1;
+				primes[(i * j) - 1] = 1;
 		}
 	}
 
