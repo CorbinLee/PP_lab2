@@ -8,7 +8,7 @@ int main(int argc, char* argv[])
 	if (argc < 3)
 		exit(1);
 
-	double tstart = 0.0, tend = 0.0, ttaken;
+	double tstart = 0.0, ttaken;
 
 	/* Parse arguments */
 	int N = strtol(argv[1], NULL, 10);
@@ -41,7 +41,7 @@ int main(int argc, char* argv[])
 	sprintf(filename, "%d.txt", N);
 	
 	FILE *output = fopen(filename, "w");
-	if (f == NULL)
+	if (output == NULL)
 	{
 	    printf("Error opening file!\n");
 	    exit(1);
