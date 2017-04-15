@@ -36,17 +36,15 @@ int main(int argc, char* argv[])
 	#pragma omp parallel for num_threads(t) default(none) shared(stop, N, primes) private(i, j) schedule(static, 1)
 	for (i = 2; i <= stop; i++) {
 		j = 2;
-		while (primes[i-1] == 0 && j <= N/i) {
-			primes[(i * j) - 1] = 1;
-			j++;
-		}
-		// if (primes[i-1] == 0) {
-		// 	for (j = 2; j <= N / i; j++) {
-		// 		primes[(i * j) - 1] = 1;
-		// 		if (primes[i-1] != 0)
-		// 			break;
-		// 	}
+		// while (primes[i-1] == 0 && j <= N/i) {
+		// 	primes[(i * j) - 1] = 1;
+		// 	j++;
 		// }
+		if (primes[i-1] == 0) {
+			for (j = 2; j <= N / i; j++) {
+				primes[(i * j) - 1] = 1;
+			}
+		}
 	}
 
 	ttaken = omp_get_wtime() - tstart;
