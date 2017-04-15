@@ -33,7 +33,7 @@ int main(int argc, char* argv[])
 	printf("2\n");
 	printf("N: %d, t: %d\n", N, t);
 
-	#pragma omp parallel for num_threads(t)
+	#pragma omp parallel for num_threads(t) default(none) shared(stop, N, primes) private(i, j)
 	for (i = 2; i <= stop; i++) {
 		if (primes[i-1] == 0) {
 			for (j = 2; j <= N / i; j++)
