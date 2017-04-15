@@ -14,6 +14,7 @@ int main(int argc, char* argv[])
 	int N = strtol(argv[1], NULL, 10);
 	int t = strtol(argv[2], NULL, 10);
 
+	/* Check that 2 < N <= 1,000,000 and 0 < t <= 100 */
 	if (!(N > 2 && N <= 1000000) || !(t > 0 && t <= 100))
 		exit(1);
 
@@ -36,7 +37,10 @@ int main(int argc, char* argv[])
 	printf("Time take for the main part: %f\n", ttaken);
 
 	/* Write output file and exit */
-	FILE *output = fopen("%d.txt", N, "w");
+	char filename[12];
+	sprintf(filename, "%d.txt", N);
+	
+	FILE *output = fopen(filename, "w");
 	if (f == NULL)
 	{
 	    printf("Error opening file!\n");
