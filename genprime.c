@@ -28,17 +28,25 @@ int main(int argc, char* argv[])
 	tstart = omp_get_wtime();
 
 	/* Generate prime numbers */
-	int i, j;
+	int i;
 
 	printf("2\n");
 	printf("N: %d, t: %d\n", N, t);
 
-	#pragma omp parallel for num_threads(t) default(none) shared(stop, N, primes) private(i, j) schedule(static, 1)
+	#pragma omp parallel for num_threads(t) default(none) shared(stop, N, primes) private(i) schedule(static, 1)
 	for (i = 2; i <= stop; i++) {
-		if (primes[i-1] == 0) {
-			for (j = 2; j <= N / i; j++)
-				primes[(i * j) - 1] = 1;
+		int j = 2;
+		while (primes[i-1] == 0 && j <= N/i) {
+			primes[(i * j) - 1] = 1;
+			j++;
 		}
+		// if (primes[i-1] == 0) {
+		// 	for (j = 2; j <= N / i; j++) {
+		// 		primes[(i * j) - 1] = 1;
+		// 		if (primes[i-1] != 0)
+		// 			break;
+		// 	}
+		// }
 	}
 
 	ttaken = omp_get_wtime() - tstart;
